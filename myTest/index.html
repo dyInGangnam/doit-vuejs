@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <title>Vue Sample</title>
+  </head>
+  <body>
+    <div id="app">
+      {{ message1 }}
+      <button type="button" name="button">컴포넌트 등록</button>
+      <my-component></my-component>
+      <my-local-component></my-component>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.2/dist/vue.js"></script>
+    <script>
+      Vue.component('my-component', {
+        template: '<div>전역 컴포넌트가 등록되었습니다~!</div>'
+      })
+
+      var cmp = {
+        template: '<div>지역 컴포넌트가 등록되었습니다~!</div>'
+      }
+
+      new Vue({
+        components: {
+          'my-local-component': cmp
+        },
+        el: '#app',
+        data: {
+          message1: 'Hello Vue.js~!'
+        },
+        beforeCreate: function () {
+          console.log("beforeCreate");
+        },
+        created: function () {
+          console.log("created");
+        },
+        mounted: function () {
+          console.log("mounted");
+          this.message1 = "Hello Vue~! (text changed)"
+        },
+        beforeUpdated: function () {
+          console.log("beforeUpdated");
+        },
+        updated: function () {
+          console.log("updated");
+        }
+      })
+    </script>
+  </body>
+</html>

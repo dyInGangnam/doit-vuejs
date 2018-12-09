@@ -7,9 +7,9 @@
 	</head>
 	<body>
 		<div id="app">
-			<router-view name="header"></router-view>
+			<router-view name="header2"></router-view>
 			<router-view></router-view>
-			<router-view name="footer"></router-view>
+			<router-view name="footer2"></router-view>
 		</div>
 
 		<script src="https://cdn.jsdelivr.net/npm/vue@2.5.2/dist/vue.js"></script>
@@ -20,6 +20,9 @@
 			var Footer = { template: '<div>This is Footer</div>' };
 
 			// 실습 #2 - LoginHeader, LoginBody, LoginFooter 컴포넌트 내용을 정의해보세요.
+			var LoginBody = { template: '<div>This is LoginBody</div>'};
+			var LoginHeader = { template: '<div>This is LoginHeader</div>'};
+			var LoginFooter = { template: '<div>This is LoginFooter~!</div>'};
 
 			var router = new VueRouter({
 				routes: [
@@ -27,11 +30,19 @@
 						path: '/',
 						components: {
 							default: Body,
-							header: Header,
-							footer: Footer
+							header2: Header,
+							footer2: Footer
 						}
 					},
 					// 실습 #1 - '/login' url을 추가하고, LoginHeader, LoginBody, LoginFooter 컴포넌트를 추가해보세요.
+					{
+						path: '/login',
+						components: {
+							header2: LoginHeader,
+							default: LoginBody,
+							footer2: LoginFooter
+						}
+					}
 
 				]
 			});
